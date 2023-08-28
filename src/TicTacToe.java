@@ -3,10 +3,12 @@ import java.util.Scanner;
 class TicTacToe {
   private Board board;
   private int playerTurn;
+  private Scanner scanner;
 
   public TicTacToe() {
     this.board = new Board();
     this.playerTurn = 1;
+    this.scanner = new Scanner(System.in);
   }
 
   public void displayBoard() {
@@ -17,20 +19,32 @@ class TicTacToe {
     this.playerTurn = this.playerTurn == 1 ? 2 : 1;
   }
 
+  public boolean hasGameFinished() {
+    return this.board.winningTripleFound() || this.board.haveCellsBeenFilled();
+  }
+
+  public void declareResult() {
+    if (this.board.winningTripleFound()) {
+      System.out.println("Player " + (this.playerTurn % 2 + 1) + " wins!");
+    } else {
+      System.out.println("It's a draw");
+    }
+  }
+
   public void play() {
     System.out.println("Welcome to Tic-Tac-Toe!\n");
     this.displayBoard();
 
-    int playerTurn = 1;
-    Scanner scanner = new Scanner(System.in);
+    while (!this.hasGameFinished()) {
+      System.out.println("Player " + this.playerTurn + ", please pick a cell from 1 to 9:");
+      String move = this.scanner.nextLine();
+      this.board.makeMove(move, this.playerTurn);
+      this.displayBoard();
+      this.switchTurn();
+    }
 
-    System.out.println("Player " + playerTurn + ", please pick a cell from 1 to 9:");
-    String move = scanner.nextLine();
-    this.board.makeMove(move, playerTurn);
-    this.displayBoard();
-    this.switchTurn();
-
-    scanner.close();
+    this.declareResult();
+    this.scanner.close();
   }
 
   public static void main(String[] args) {
