@@ -23,35 +23,29 @@ public class Board {
     System.out.println(line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8 + line9);
   }
 
-  public void makeMove(String move, int playerTurn) {
+  public boolean makeMove(String move, int playerTurn) {
     switch (move) {
       case "1":
-        this.cells[0][0].fill(playerTurn);
-        break;
+        return this.cells[0][0].fill(playerTurn);
       case "2":
-        this.cells[0][1].fill(playerTurn);
-        break;
+        return this.cells[0][1].fill(playerTurn);
       case "3":
-        this.cells[0][2].fill(playerTurn);
-        break;
+        return this.cells[0][2].fill(playerTurn);
       case "4":
-        this.cells[1][0].fill(playerTurn);
-        break;
+        return this.cells[1][0].fill(playerTurn);
       case "5":
-        this.cells[1][1].fill(playerTurn);
-        break;
+        return this.cells[1][1].fill(playerTurn);
       case "6":
-        this.cells[1][2].fill(playerTurn);
-        break;
+        return this.cells[1][2].fill(playerTurn);
       case "7":
-        this.cells[2][0].fill(playerTurn);
-        break;
+        return this.cells[2][0].fill(playerTurn);
       case "8":
-        this.cells[2][1].fill(playerTurn);
-        break;
+        return this.cells[2][1].fill(playerTurn);
       case "9":
-        this.cells[2][2].fill(playerTurn);
-        break;
+        return this.cells[2][2].fill(playerTurn);
+      default:
+        System.out.println("Invalid cell number!");
+        return false;
     }
   }
 

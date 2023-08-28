@@ -19,12 +19,18 @@ public class Cell {
     this.value = value;
   }
 
-  public void fill(int playerTurn) {
+  public boolean fill(int playerTurn) {
+    if (this.isFilled) {
+      System.out.println("Cell already taken!");
+      return false;
+    }
+
     if (playerTurn == 1) {
       this.setValue("X");
     } else if (playerTurn == 2) {
       this.setValue("O");
     }
     this.isFilled = true;
+    return true;
   }
 }

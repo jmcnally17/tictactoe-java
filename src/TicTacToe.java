@@ -38,9 +38,10 @@ class TicTacToe {
     while (!this.hasGameFinished()) {
       System.out.println("Player " + this.playerTurn + ", please pick a cell from 1 to 9:");
       String move = this.scanner.nextLine();
-      this.board.makeMove(move, this.playerTurn);
+      if (this.board.makeMove(move, this.playerTurn)) {
+        this.switchTurn();
+      }
       this.displayBoard();
-      this.switchTurn();
     }
 
     this.declareResult();
