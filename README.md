@@ -26,7 +26,7 @@ If you want to compile the code yourself, you will need to install the Java Deve
 
 ```
 brew install java
-sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 ```
 
 Then navigate to the [bin](https://github.com/jmcnally17/tictactoe-java/tree/main/bin) folder and enter
