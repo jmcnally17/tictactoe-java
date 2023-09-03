@@ -1,3 +1,5 @@
+import java.io.PrintStream;
+
 public class Cell {
   private String value;
   private boolean isFilled;
@@ -19,9 +21,9 @@ public class Cell {
     this.value = value;
   }
 
-  public boolean fill(int playerTurn) {
+  public boolean fill(int playerTurn, PrintStream out) {
     if (this.isFilled) {
-      System.out.println("Cell already taken!");
+      out.println("Cell already taken!");
       return false;
     }
 
