@@ -32,19 +32,19 @@ public class CellTest {
 
     @Test
     public void fillSetsValueToXForPlayer1Turn() {
-        this.cell.fill(1);
+        Assertions.assertTrue(this.cell.fill(1));
         Assertions.assertEquals("X", this.cell.getValue());
     }
 
     @Test
     public void fillSetsValueToOForPlayer2Turn() {
-        this.cell.fill(2);
+        Assertions.assertTrue(this.cell.fill(2));
         Assertions.assertEquals("O", this.cell.getValue());
     }
 
     @Test
     public void fillSetsIsFilledToTrue() {
-        this.cell.fill(1);
+        Assertions.assertTrue(this.cell.fill(1));
         Assertions.assertTrue(this.cell.hasBeenFilled());
     }
 }
