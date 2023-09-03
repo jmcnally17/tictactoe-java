@@ -14,7 +14,7 @@ Upon loading the game, the players will be met with an interface that displays t
   <b>Fig.1 -</b> Some example output from the program. Initially, the game starts with a welcome message before asking the player to choose a cell. The player then chooses cell number 1, which updates the board by placing X in the topleft cell.
 </p>
 
-## Getting Started
+## Getting Started (macOS)
 
 Start by cloning this repository using
 
@@ -22,27 +22,43 @@ Start by cloning this repository using
 git clone https://github.com/jmcnally17/tictactoe-java.git
 ```
 
-If you want to compile the code yourself, you will need to install the Java Development Kit (JDK), which can be installed via Homebrew and then linked by running
+If you want to compile the code yourself, you can do so using [Maven](https://maven.apache.org/) (one of Java's build automation tools), which can be installed via Homebrew. However, you will need to install the Java Development Kit (JDK) first, which can also be installed via Homebrew. Install and then link it by running
 
 ```
 brew install java
 sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 ```
 
-Then navigate to the [bin](https://github.com/jmcnally17/tictactoe-java/tree/main/bin) folder and enter
+and then you are free to install Maven with
 
 ```
-javac ../src/*.java -d .
+brew install maven
 ```
 
-which creates the .class files (you can try deleting these files first to verify the compiling worked)
+Then navigate to the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory and enter
+
+```
+mvn compile
+```
+
+which creates the .class files in the [bin/game](https://github.com/jmcnally17/tictactoe-java/tree/main/bin/game) folder (you can try deleting these files first to verify the compiling worked).
 
 ## How To Run
 
-While in the [bin](https://github.com/jmcnally17/tictactoe-java/tree/main/bin) folder, run
+While in the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory, run
 
 ```
-java TicTacToe
+java -cp bin/game TicTacToe
 ```
 
 and the game should run in your terminal.
+
+## Testing
+
+Some tests for the Cell class have been written using [JUnit 5](https://junit.org/junit5/) so far. To run these tests, enter
+
+```
+mvn test
+```
+
+into your terminal. This compiles the test files into .class files which are generated and run in the [bin/tests](https://github.com/jmcnally17/tictactoe-java/tree/main/bin/tests) folder.
