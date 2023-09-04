@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit test for the Cell class
+ * Unit test for Cell class
  */
 public class CellTest {
   private Cell cell;

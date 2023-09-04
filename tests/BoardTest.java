@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit test for the Board class
+ * Unit test for Board class
  */
 public class BoardTest {
   private Board board;

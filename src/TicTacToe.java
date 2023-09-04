@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.Scanner;
 
 class TicTacToe {
@@ -5,10 +6,14 @@ class TicTacToe {
   private int playerTurn;
   private Scanner scanner;
 
-  public TicTacToe(Board board) {
+  public TicTacToe(Board board, Scanner scanner) {
     this.board = board;
     this.playerTurn = 1;
-    this.scanner = new Scanner(System.in);
+    this.scanner = scanner;
+  }
+
+  public int getPlayerTurn() {
+    return this.playerTurn;
   }
 
   public void displayBoard() {
@@ -16,18 +21,23 @@ class TicTacToe {
   }
 
   public void switchTurn() {
-    this.playerTurn = this.playerTurn == 1 ? 2 : 1;
+    this.playerTurn = this.getPlayerTurn() % 2 + 1;
   }
 
   public boolean hasGameFinished() {
     return this.board.winningTripleFound() || this.board.haveCellsBeenFilled();
   }
 
-  public void declareResult() {
+  public String takePlayersMove(PrintStream out) {
+    out.println("Player " + this.getPlayerTurn() + ", please pick a cell from 1 to 9:");
+    return this.scanner.nextLine();
+  }
+
+  public void declareResult(PrintStream out) {
     if (this.board.winningTripleFound()) {
-      System.out.println("Player " + (this.playerTurn % 2 + 1) + " wins!");
+      out.println("Player " + (this.getPlayerTurn() % 2 + 1) + " wins!");
     } else {
-      System.out.println("It's a draw");
+      out.println("It's a draw");
     }
   }
 
@@ -36,15 +46,14 @@ class TicTacToe {
     this.displayBoard();
 
     while (!this.hasGameFinished()) {
-      System.out.println("Player " + this.playerTurn + ", please pick a cell from 1 to 9:");
-      String move = this.scanner.nextLine();
+      String move = this.takePlayersMove(System.out);
       if (this.board.makeMove(move, this.playerTurn, System.out)) {
         this.switchTurn();
       }
       this.displayBoard();
     }
 
-    this.declareResult();
+    this.declareResult(System.out);
     this.scanner.close();
   }
 
@@ -53,7 +62,8 @@ class TicTacToe {
         { new Cell("4"), new Cell("5"), new Cell("6") },
         { new Cell("7"), new Cell("8"), new Cell("9") } };
     Board board = new Board(cells);
-    TicTacToe ticTacToe = new TicTacToe(board);
+    Scanner scanner = new Scanner(System.in);
+    TicTacToe ticTacToe = new TicTacToe(board, scanner);
     ticTacToe.play();
   }
 }
