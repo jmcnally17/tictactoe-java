@@ -1,8 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
-
-import static org.mockito.Mockito.times;
-
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -145,15 +142,15 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(4)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(3)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(4)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
     Mockito.verify(this.cells[2][0]).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
-    Mockito.verify(this.cells[2][2], times(0)).getValue();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).getValue();
   }
 
   @Test
@@ -169,15 +166,15 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(3)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(2)).getValue();
-    Mockito.verify(this.cells[1][0], times(3)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
-    Mockito.verify(this.cells[1][2], times(2)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
+    Mockito.verify(this.cells[1][2], Mockito.times(2)).getValue();
     Mockito.verify(this.cells[2][0]).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
-    Mockito.verify(this.cells[2][2], times(0)).getValue();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).getValue();
   }
 
   @Test
@@ -193,13 +190,13 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("X");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(3)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(2)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
-    Mockito.verify(this.cells[2][0], times(2)).getValue();
+    Mockito.verify(this.cells[2][0], Mockito.times(2)).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
     Mockito.verify(this.cells[2][2]).getValue();
   }
@@ -217,15 +214,15 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(4)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(2)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(4)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
-    Mockito.verify(this.cells[2][0], times(2)).getValue();
+    Mockito.verify(this.cells[2][0], Mockito.times(2)).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
-    Mockito.verify(this.cells[2][2], times(0)).getValue();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).getValue();
   }
 
   @Test
@@ -241,15 +238,15 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(3)).getValue();
-    Mockito.verify(this.cells[0][1], times(3)).getValue();
-    Mockito.verify(this.cells[0][2], times(2)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
     Mockito.verify(this.cells[2][0]).getValue();
-    Mockito.verify(this.cells[2][1], times(2)).getValue();
-    Mockito.verify(this.cells[2][2], times(0)).getValue();
+    Mockito.verify(this.cells[2][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).getValue();
   }
 
   @Test
@@ -265,11 +262,11 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("X");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(3)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(3)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
     Mockito.verify(this.cells[2][0]).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
@@ -289,11 +286,11 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("X");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(4)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(2)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(4)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
     Mockito.verify(this.cells[2][0]).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
@@ -313,15 +310,15 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
 
     Assertions.assertTrue(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(3)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(3)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
-    Mockito.verify(this.cells[2][0], times(2)).getValue();
+    Mockito.verify(this.cells[2][0], Mockito.times(2)).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
-    Mockito.verify(this.cells[2][2], times(0)).getValue();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).getValue();
   }
 
   @Test
@@ -337,15 +334,15 @@ public class BoardTest {
     Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
 
     Assertions.assertFalse(this.board.winningTripleFound());
-    Mockito.verify(this.cells[0][0], times(3)).getValue();
-    Mockito.verify(this.cells[0][1], times(2)).getValue();
-    Mockito.verify(this.cells[0][2], times(2)).getValue();
-    Mockito.verify(this.cells[1][0], times(2)).getValue();
-    Mockito.verify(this.cells[1][1], times(4)).getValue();
+    Mockito.verify(this.cells[0][0], Mockito.times(3)).getValue();
+    Mockito.verify(this.cells[0][1], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[0][2], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][0], Mockito.times(2)).getValue();
+    Mockito.verify(this.cells[1][1], Mockito.times(4)).getValue();
     Mockito.verify(this.cells[1][2]).getValue();
     Mockito.verify(this.cells[2][0]).getValue();
     Mockito.verify(this.cells[2][1]).getValue();
-    Mockito.verify(this.cells[2][2], times(0)).getValue();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).getValue();
   }
 
   @Test
@@ -374,14 +371,14 @@ public class BoardTest {
 
     Assertions.assertFalse(this.board.haveCellsBeenFilled());
     Mockito.verify(this.cells[0][0]).hasBeenFilled();
-    Mockito.verify(this.cells[0][1], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[0][2], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[1][0], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[1][1], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[1][2], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[2][0], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[2][1], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[2][2], times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[0][1], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[0][2], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[1][0], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[1][1], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[1][2], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[2][0], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[2][1], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).hasBeenFilled();
   }
 
   @Test
@@ -399,12 +396,12 @@ public class BoardTest {
     Assertions.assertFalse(this.board.haveCellsBeenFilled());
     Mockito.verify(this.cells[0][0]).hasBeenFilled();
     Mockito.verify(this.cells[0][1]).hasBeenFilled();
-    Mockito.verify(this.cells[0][2], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[1][0], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[1][1], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[1][2], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[2][0], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[2][1], times(0)).hasBeenFilled();
-    Mockito.verify(this.cells[2][2], times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[0][2], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[1][0], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[1][1], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[1][2], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[2][0], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[2][1], Mockito.times(0)).hasBeenFilled();
+    Mockito.verify(this.cells[2][2], Mockito.times(0)).hasBeenFilled();
   }
 }
