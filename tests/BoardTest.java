@@ -128,4 +128,164 @@ public class BoardTest {
     Assertions.assertFalse(this.board.makeMove("25", 1, this.mockOut));
     Mockito.verify(this.mockOut).println("Invalid cell number!");
   }
+
+  @Test
+  public void winningTripleFoundForFirstRow() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("5");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("7");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForSecondRow() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("2");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("3");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("7");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForThirdRow() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("2");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("3");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("5");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("X");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForFirstColumn() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("2");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("2");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("5");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForSecondColumn() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("3");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("7");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForThirdColumn() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("5");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("7");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("X");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForFirstDiagonal() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("2");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("3");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("7");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("X");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleFoundForSecondDiagonal() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("2");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("X");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("X");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
+    Assertions.assertTrue(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void winningTripleNotFound() {
+    Mockito.when(this.cells[0][0].getValue()).thenReturn("1");
+    Mockito.when(this.cells[0][1].getValue()).thenReturn("2");
+    Mockito.when(this.cells[0][2].getValue()).thenReturn("3");
+    Mockito.when(this.cells[1][0].getValue()).thenReturn("4");
+    Mockito.when(this.cells[1][1].getValue()).thenReturn("5");
+    Mockito.when(this.cells[1][2].getValue()).thenReturn("6");
+    Mockito.when(this.cells[2][0].getValue()).thenReturn("7");
+    Mockito.when(this.cells[2][1].getValue()).thenReturn("8");
+    Mockito.when(this.cells[2][2].getValue()).thenReturn("9");
+    Assertions.assertFalse(this.board.winningTripleFound());
+  }
+
+  @Test
+  public void cellsHaveBeenFilled() {
+    for (Cell[] row : this.cells) {
+      for (Cell cell : row) {
+        Mockito.when(cell.hasBeenFilled()).thenReturn(true);
+      }
+    }
+    Assertions.assertTrue(this.board.haveCellsBeenFilled());
+  }
+
+  @Test
+  public void cellsHaveNotBeenFilled() {
+    for (Cell[] row : this.cells) {
+      for (Cell cell : row) {
+        Mockito.when(cell.hasBeenFilled()).thenReturn(false);
+      }
+    }
+    Assertions.assertFalse(this.board.haveCellsBeenFilled());
+  }
+
+  @Test
+  public void cellsHaveBeenPartiallyFilled() {
+    Mockito.when(this.cells[0][0].hasBeenFilled()).thenReturn(true);
+    Mockito.when(this.cells[0][1].hasBeenFilled()).thenReturn(false);
+    Mockito.when(this.cells[0][2].hasBeenFilled()).thenReturn(true);
+    Mockito.when(this.cells[1][0].hasBeenFilled()).thenReturn(true);
+    Mockito.when(this.cells[1][1].hasBeenFilled()).thenReturn(false);
+    Mockito.when(this.cells[1][2].hasBeenFilled()).thenReturn(false);
+    Mockito.when(this.cells[2][0].hasBeenFilled()).thenReturn(true);
+    Mockito.when(this.cells[2][1].hasBeenFilled()).thenReturn(false);
+    Mockito.when(this.cells[2][2].hasBeenFilled()).thenReturn(false);
+    Assertions.assertFalse(this.board.haveCellsBeenFilled());
+  }
 }
