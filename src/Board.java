@@ -1,50 +1,50 @@
+import java.io.PrintStream;
+
 public class Board {
   private Cell[][] cells;
 
-  public Board() {
-    this.cells = new Cell[][] { { new Cell("1"), new Cell("2"), new Cell("3") },
-        { new Cell("4"), new Cell("5"), new Cell("6") },
-        { new Cell("7"), new Cell("8"), new Cell("9") } };
+  public Board(Cell[][] cells) {
+    this.cells = cells;
   }
 
-  public void display() {
-    String line1 = "     |     |     \n";
+  public void display(PrintStream out) {
+    String line1 = "     |     |\n";
     String line2 = "  " + cells[0][0].getValue() + "  |  " + cells[0][1].getValue() + "  |  " + cells[0][2].getValue()
-        + "  \n";
+        + "\n";
     String line3 = "_____|_____|_____\n";
-    String line4 = "     |     |     \n";
+    String line4 = "     |     |\n";
     String line5 = "  " + cells[1][0].getValue() + "  |  " + cells[1][1].getValue() + "  |  " + cells[1][2].getValue()
-        + "  \n";
+        + "\n";
     String line6 = "_____|_____|_____\n";
-    String line7 = "     |     |     \n";
+    String line7 = "     |     |\n";
     String line8 = "  " + cells[2][0].getValue() + "  |  " + cells[2][1].getValue() + "  |  " + cells[2][2].getValue()
-        + "  \n";
-    String line9 = "     |     |     \n";
-    System.out.println(line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8 + line9);
+        + "\n";
+    String line9 = "     |     |\n";
+    out.println(line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8 + line9);
   }
 
-  public boolean makeMove(String move, int playerTurn) {
+  public boolean makeMove(String move, int playerTurn, PrintStream out) {
     switch (move) {
       case "1":
-        return this.cells[0][0].fill(playerTurn);
+        return this.cells[0][0].fill(playerTurn, out);
       case "2":
-        return this.cells[0][1].fill(playerTurn);
+        return this.cells[0][1].fill(playerTurn, out);
       case "3":
-        return this.cells[0][2].fill(playerTurn);
+        return this.cells[0][2].fill(playerTurn, out);
       case "4":
-        return this.cells[1][0].fill(playerTurn);
+        return this.cells[1][0].fill(playerTurn, out);
       case "5":
-        return this.cells[1][1].fill(playerTurn);
+        return this.cells[1][1].fill(playerTurn, out);
       case "6":
-        return this.cells[1][2].fill(playerTurn);
+        return this.cells[1][2].fill(playerTurn, out);
       case "7":
-        return this.cells[2][0].fill(playerTurn);
+        return this.cells[2][0].fill(playerTurn, out);
       case "8":
-        return this.cells[2][1].fill(playerTurn);
+        return this.cells[2][1].fill(playerTurn, out);
       case "9":
-        return this.cells[2][2].fill(playerTurn);
+        return this.cells[2][2].fill(playerTurn, out);
       default:
-        System.out.println("Invalid cell number!");
+        out.println("Invalid cell number!");
         return false;
     }
   }
