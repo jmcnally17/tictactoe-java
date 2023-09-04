@@ -47,6 +47,7 @@ public class TicTacToeTest {
   public void hasGameFinishedTrueWhenPlayerHasWon() {
     Mockito.when(this.board.winningTripleFound()).thenReturn(true);
     Assertions.assertTrue(this.ticTacToe.hasGameFinished());
+    Mockito.verify(this.board).winningTripleFound();
   }
 
   @Test
@@ -54,6 +55,8 @@ public class TicTacToeTest {
     Mockito.when(this.board.winningTripleFound()).thenReturn(false);
     Mockito.when(this.board.haveCellsBeenFilled()).thenReturn(true);
     Assertions.assertTrue(this.ticTacToe.hasGameFinished());
+    Mockito.verify(this.board).winningTripleFound();
+    Mockito.verify(this.board).haveCellsBeenFilled();
   }
 
   @Test
@@ -61,6 +64,8 @@ public class TicTacToeTest {
     Mockito.when(this.board.winningTripleFound()).thenReturn(true);
     Mockito.when(this.board.haveCellsBeenFilled()).thenReturn(true);
     Assertions.assertTrue(this.ticTacToe.hasGameFinished());
+    Mockito.verify(this.board).winningTripleFound();
+    Mockito.verify(this.board, Mockito.times(0)).haveCellsBeenFilled();
   }
 
   @Test
@@ -68,13 +73,16 @@ public class TicTacToeTest {
     Mockito.when(this.board.winningTripleFound()).thenReturn(false);
     Mockito.when(this.board.haveCellsBeenFilled()).thenReturn(false);
     Assertions.assertFalse(this.ticTacToe.hasGameFinished());
+    Mockito.verify(this.board).winningTripleFound();
+    Mockito.verify(this.board).haveCellsBeenFilled();
   }
 
   @Test
   public void takePlayersMoveAsksPlayer1ForInputAndReturnsIt() {
     Mockito.when(this.mockScanner.nextLine()).thenReturn("5");
-    Assertions.assertEquals(this.mockScanner.nextLine(), this.ticTacToe.takePlayersMove(mockOut));
+    Assertions.assertEquals("5", this.ticTacToe.takePlayersMove(mockOut));
     Mockito.verify(this.mockOut).println("Player 1, please pick a cell from 1 to 9:");
+    Mockito.verify(this.mockScanner).nextLine();
   }
 
   @Test
@@ -82,14 +90,16 @@ public class TicTacToeTest {
     this.ticTacToe.switchTurn();
 
     Mockito.when(this.mockScanner.nextLine()).thenReturn("5");
-    Assertions.assertEquals(this.mockScanner.nextLine(), this.ticTacToe.takePlayersMove(mockOut));
+    Assertions.assertEquals("5", this.ticTacToe.takePlayersMove(mockOut));
     Mockito.verify(this.mockOut).println("Player 2, please pick a cell from 1 to 9:");
+    Mockito.verify(this.mockScanner).nextLine();
   }
 
   @Test
   public void declareResultPrintsPlayer2Winner() {
     Mockito.when(this.board.winningTripleFound()).thenReturn(true);
     this.ticTacToe.declareResult(mockOut);
+    Mockito.verify(this.board).winningTripleFound();
     Mockito.verify(this.mockOut).println("Player 2 wins!");
   }
 
@@ -99,6 +109,7 @@ public class TicTacToeTest {
 
     Mockito.when(this.board.winningTripleFound()).thenReturn(true);
     this.ticTacToe.declareResult(mockOut);
+    Mockito.verify(this.board).winningTripleFound();
     Mockito.verify(this.mockOut).println("Player 1 wins!");
   }
 
@@ -106,6 +117,7 @@ public class TicTacToeTest {
   public void declareResultPrintsADraw() {
     Mockito.when(this.board.winningTripleFound()).thenReturn(false);
     this.ticTacToe.declareResult(mockOut);
+    Mockito.verify(this.board).winningTripleFound();
     Mockito.verify(this.mockOut).println("It's a draw");
   }
 }

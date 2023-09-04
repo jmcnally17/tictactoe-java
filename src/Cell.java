@@ -22,7 +22,7 @@ public class Cell {
   }
 
   public boolean fill(int playerTurn, PrintStream out) {
-    if (this.isFilled) {
+    if (this.hasBeenFilled()) {
       out.println("Cell already taken!");
       return false;
     }
