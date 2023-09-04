@@ -55,7 +55,7 @@ and the game should run in your terminal.
 
 ## Testing
 
-Some tests for the Cell class have been written using [JUnit 5](https://junit.org/junit5/) so far. To run these tests, enter
+Tests have been written using [JUnit 5](https://junit.org/junit5/) and [Mockito](https://site.mockito.org/). To run these tests, enter
 
 ```
 mvn test
