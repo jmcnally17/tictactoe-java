@@ -41,7 +41,7 @@ Then navigate to the [main](https://github.com/jmcnally17/tictactoe-java/tree/ma
 mvn compile
 ```
 
-which creates the .class files in the [bin/game](https://github.com/jmcnally17/tictactoe-java/tree/main/bin/game) folder (you can try deleting these files first to verify the compiling worked).
+which creates the .class files in the [bin/classes](https://github.com/jmcnally17/tictactoe-java/tree/main/bin/classes) folder (you can try deleting these files first to verify the compiling worked).
 
 ## How To Run
 
@@ -62,3 +62,5 @@ mvn test
 ```
 
 into your terminal. This compiles the test files into .class files which are generated and run in the [bin/tests](https://github.com/jmcnally17/tictactoe-java/tree/main/bin/tests) folder.
+
+After running the tests, code coverage stats should have been generated in a coverage folder in the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory using the [JaCoCo](https://www.jacoco.org/jacoco/) Maven plugin. These are in HTML format and can be viewed by opening them in your browser.
