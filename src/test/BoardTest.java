@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 /**
  * Unit test for Board class
  */
+@Test(groups = { "Board" })
 public class BoardTest {
   private Board board;
   private Cell[][] cells;

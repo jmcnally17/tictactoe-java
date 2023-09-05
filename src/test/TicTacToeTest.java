@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 /**
  * Unit tests for TicTacToe class
  */
+@Test(groups = { "TicTacToe" })
 public class TicTacToeTest {
   private TicTacToe ticTacToe;
   private Board board;
@@ -23,7 +24,7 @@ public class TicTacToeTest {
     mockOut = mock(PrintStream.class);
   }
 
-  @Test(groups = { "uponinstantiation" })
+  @Test(groups = { "tictactoeinstantiation" })
   public void playerTurnIs1() {
     assertEquals(1, ticTacToe.getPlayerTurn());
   }

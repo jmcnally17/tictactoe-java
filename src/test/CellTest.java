@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 /**
  * Unit test for Cell class
  */
+@Test(groups = { "Cell" })
 public class CellTest {
   private Cell cell;
   private PrintStream outMock;
@@ -18,12 +19,12 @@ public class CellTest {
     outMock = mock(PrintStream.class);
   }
 
-  @Test(groups = { "uponinstantiation" })
+  @Test(groups = { "cellinstantiation" })
   public void isFilledIsFalse() {
     assertFalse(cell.hasBeenFilled());
   }
 
-  @Test(groups = { "uponinstantiation" })
+  @Test(groups = { "cellinstantiation" })
   public void valueIsSetToConstructorParameter() {
     assertEquals("4", cell.getValue());
   }
