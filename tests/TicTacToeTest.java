@@ -1,9 +1,10 @@
-import org.junit.jupiter.api.Assertions;
-import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -17,107 +18,125 @@ public class TicTacToeTest {
 
   @BeforeEach
   public void beforeEach() {
-    this.board = Mockito.mock(Board.class);
-    this.mockScanner = Mockito.mock(Scanner.class);
-    this.ticTacToe = new TicTacToe(this.board, mockScanner);
-    this.mockOut = Mockito.mock(PrintStream.class);
+    board = mock(Board.class);
+    mockScanner = mock(Scanner.class);
+    ticTacToe = new TicTacToe(board, mockScanner);
+    mockOut = mock(PrintStream.class);
   }
 
-  @Test
-  public void playerTurnIs1UponInstantiation() {
-    Assertions.assertEquals(1, this.ticTacToe.getPlayerTurn());
+  @Nested
+  class UponInstantiation {
+    @Test
+    public void playerTurnIs1() {
+      assertEquals(1, ticTacToe.getPlayerTurn());
+    }
   }
 
-  @Test
-  public void displayBoardCallsDisplayOnBoard() {
-    this.ticTacToe.displayBoard();
-    Mockito.verify(this.board).display(System.out);
+  @Nested
+  class DisplayBoard {
+    @Test
+    public void callsDisplayOnBoard() {
+      ticTacToe.displayBoard();
+      verify(board).display(System.out);
+    }
   }
 
-  @Test
-  public void switchTurnChangesTurnBetween1And2() {
-    this.ticTacToe.switchTurn();
-    Assertions.assertEquals(2, this.ticTacToe.getPlayerTurn());
+  @Nested
+  class SwitchTurn {
+    @Test
+    public void changesTurnBetween1And2() {
+      ticTacToe.switchTurn();
+      assertEquals(2, ticTacToe.getPlayerTurn());
 
-    this.ticTacToe.switchTurn();
-    Assertions.assertEquals(1, this.ticTacToe.getPlayerTurn());
+      ticTacToe.switchTurn();
+      assertEquals(1, ticTacToe.getPlayerTurn());
+    }
   }
 
-  @Test
-  public void hasGameFinishedTrueWhenPlayerHasWon() {
-    Mockito.when(this.board.winningTripleFound()).thenReturn(true);
-    Assertions.assertTrue(this.ticTacToe.hasGameFinished());
-    Mockito.verify(this.board).winningTripleFound();
+  @Nested
+  class HasGameFinished {
+    @Test
+    public void trueWhenPlayerHasWon() {
+      when(board.winningTripleFound()).thenReturn(true);
+      assertTrue(ticTacToe.hasGameFinished());
+      verify(board).winningTripleFound();
+    }
+
+    @Test
+    public void trueWhenCellsFilled() {
+      when(board.winningTripleFound()).thenReturn(false);
+      when(board.haveCellsBeenFilled()).thenReturn(true);
+      assertTrue(ticTacToe.hasGameFinished());
+      verify(board).winningTripleFound();
+      verify(board).haveCellsBeenFilled();
+    }
+
+    @Test
+    public void trueWhenPlayerWonAndCellsFilled() {
+      when(board.winningTripleFound()).thenReturn(true);
+      when(board.haveCellsBeenFilled()).thenReturn(true);
+      assertTrue(ticTacToe.hasGameFinished());
+      verify(board).winningTripleFound();
+      verify(board, times(0)).haveCellsBeenFilled();
+    }
+
+    @Test
+    public void falseWhenPlayerHasWon() {
+      when(board.winningTripleFound()).thenReturn(false);
+      when(board.haveCellsBeenFilled()).thenReturn(false);
+      assertFalse(ticTacToe.hasGameFinished());
+      verify(board).winningTripleFound();
+      verify(board).haveCellsBeenFilled();
+    }
   }
 
-  @Test
-  public void hasGameFinishedTrueWhenCellsFilled() {
-    Mockito.when(this.board.winningTripleFound()).thenReturn(false);
-    Mockito.when(this.board.haveCellsBeenFilled()).thenReturn(true);
-    Assertions.assertTrue(this.ticTacToe.hasGameFinished());
-    Mockito.verify(this.board).winningTripleFound();
-    Mockito.verify(this.board).haveCellsBeenFilled();
+  @Nested
+  class TakePlayersMove {
+    @Test
+    public void asksPlayer1ForInputAndReturnsIt() {
+      when(mockScanner.nextLine()).thenReturn("5");
+      assertEquals("5", ticTacToe.takePlayersMove(mockOut));
+      verify(mockOut).println("Player 1, please pick a cell from 1 to 9:");
+      verify(mockScanner).nextLine();
+    }
+
+    @Test
+    public void asksPlayer2ForInputAndReturnsIt() {
+      ticTacToe.switchTurn();
+
+      when(mockScanner.nextLine()).thenReturn("5");
+      assertEquals("5", ticTacToe.takePlayersMove(mockOut));
+      verify(mockOut).println("Player 2, please pick a cell from 1 to 9:");
+      verify(mockScanner).nextLine();
+    }
   }
 
-  @Test
-  public void hasGameFinishedTrueWhenPlayerWonAndCellsFilled() {
-    Mockito.when(this.board.winningTripleFound()).thenReturn(true);
-    Mockito.when(this.board.haveCellsBeenFilled()).thenReturn(true);
-    Assertions.assertTrue(this.ticTacToe.hasGameFinished());
-    Mockito.verify(this.board).winningTripleFound();
-    Mockito.verify(this.board, Mockito.times(0)).haveCellsBeenFilled();
-  }
+  @Nested
+  class DeclareResult {
+    @Test
+    public void printsPlayer2Winner() {
+      when(board.winningTripleFound()).thenReturn(true);
+      ticTacToe.declareResult(mockOut);
+      verify(board).winningTripleFound();
+      verify(mockOut).println("Player 2 wins!");
+    }
 
-  @Test
-  public void hasGameFinishedFalseWhenPlayerHasWon() {
-    Mockito.when(this.board.winningTripleFound()).thenReturn(false);
-    Mockito.when(this.board.haveCellsBeenFilled()).thenReturn(false);
-    Assertions.assertFalse(this.ticTacToe.hasGameFinished());
-    Mockito.verify(this.board).winningTripleFound();
-    Mockito.verify(this.board).haveCellsBeenFilled();
-  }
+    @Test
+    public void printsPlayer1Winner() {
+      ticTacToe.switchTurn();
 
-  @Test
-  public void takePlayersMoveAsksPlayer1ForInputAndReturnsIt() {
-    Mockito.when(this.mockScanner.nextLine()).thenReturn("5");
-    Assertions.assertEquals("5", this.ticTacToe.takePlayersMove(mockOut));
-    Mockito.verify(this.mockOut).println("Player 1, please pick a cell from 1 to 9:");
-    Mockito.verify(this.mockScanner).nextLine();
-  }
+      when(board.winningTripleFound()).thenReturn(true);
+      ticTacToe.declareResult(mockOut);
+      verify(board).winningTripleFound();
+      verify(mockOut).println("Player 1 wins!");
+    }
 
-  @Test
-  public void takePlayersMoveAsksPlayer2ForInputAndReturnsIt() {
-    this.ticTacToe.switchTurn();
-
-    Mockito.when(this.mockScanner.nextLine()).thenReturn("5");
-    Assertions.assertEquals("5", this.ticTacToe.takePlayersMove(mockOut));
-    Mockito.verify(this.mockOut).println("Player 2, please pick a cell from 1 to 9:");
-    Mockito.verify(this.mockScanner).nextLine();
-  }
-
-  @Test
-  public void declareResultPrintsPlayer2Winner() {
-    Mockito.when(this.board.winningTripleFound()).thenReturn(true);
-    this.ticTacToe.declareResult(mockOut);
-    Mockito.verify(this.board).winningTripleFound();
-    Mockito.verify(this.mockOut).println("Player 2 wins!");
-  }
-
-  @Test
-  public void declareResultPrintsPlayer1Winner() {
-    this.ticTacToe.switchTurn();
-
-    Mockito.when(this.board.winningTripleFound()).thenReturn(true);
-    this.ticTacToe.declareResult(mockOut);
-    Mockito.verify(this.board).winningTripleFound();
-    Mockito.verify(this.mockOut).println("Player 1 wins!");
-  }
-
-  @Test
-  public void declareResultPrintsADraw() {
-    Mockito.when(this.board.winningTripleFound()).thenReturn(false);
-    this.ticTacToe.declareResult(mockOut);
-    Mockito.verify(this.board).winningTripleFound();
-    Mockito.verify(this.mockOut).println("It's a draw");
+    @Test
+    public void printsADraw() {
+      when(board.winningTripleFound()).thenReturn(false);
+      ticTacToe.declareResult(mockOut);
+      verify(board).winningTripleFound();
+      verify(mockOut).println("It's a draw");
+    }
   }
 }

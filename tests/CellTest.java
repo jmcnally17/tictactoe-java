@@ -1,8 +1,9 @@
-import org.junit.jupiter.api.Assertions;
-import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,53 +11,67 @@ import org.junit.jupiter.api.Test;
  */
 public class CellTest {
   private Cell cell;
-  private PrintStream outMock;
 
   @BeforeEach
   public void beforeEach() {
-    this.cell = new Cell("4");
-    this.outMock = Mockito.mock(PrintStream.class);
+    cell = new Cell("4");
   }
 
-  @Test
-  public void isFilledIsFalseUponInstantiation() {
-    Assertions.assertFalse(this.cell.hasBeenFilled());
+  @Nested
+  class UponInstantiation {
+    @Test
+    public void isFilledIsFalse() {
+      assertFalse(cell.hasBeenFilled());
+    }
+
+    @Test
+    public void valueIsSetToConstructorParameter() {
+      assertEquals("4", cell.getValue());
+    }
   }
 
-  @Test
-  public void valueIsInstantiatedWithParameterInConstructor() {
-    Assertions.assertEquals("4", this.cell.getValue());
+  @Nested
+  class SetValue {
+    @Test
+    public void changesValueProperty() {
+      cell.setValue("X");
+      assertEquals("X", cell.getValue());
+    }
   }
 
-  @Test
-  public void setValueChangesValueProperty() {
-    this.cell.setValue("X");
-    Assertions.assertEquals("X", this.cell.getValue());
-  }
+  @Nested
+  class Fill {
+    private PrintStream outMock;
 
-  @Test
-  public void fillSetsValueToXForPlayer1Turn() {
-    Assertions.assertTrue(this.cell.fill(1, this.outMock));
-    Assertions.assertEquals("X", this.cell.getValue());
-  }
+    @BeforeEach
+    public void beforeEach() {
+      outMock = mock(PrintStream.class);
+    }
 
-  @Test
-  public void fillSetsValueToOForPlayer2Turn() {
-    Assertions.assertTrue(this.cell.fill(2, this.outMock));
-    Assertions.assertEquals("O", this.cell.getValue());
-  }
+    @Test
+    public void setsValueToXForPlayer1Turn() {
+      assertTrue(cell.fill(1, outMock));
+      assertEquals("X", cell.getValue());
+    }
 
-  @Test
-  public void fillSetsIsFilledToTrue() {
-    Assertions.assertTrue(this.cell.fill(1, this.outMock));
-    Assertions.assertTrue(this.cell.hasBeenFilled());
-  }
+    @Test
+    public void setsValueToOForPlayer2Turn() {
+      assertTrue(cell.fill(2, outMock));
+      assertEquals("O", cell.getValue());
+    }
 
-  @Test
-  public void fillDoesNotChangeValueIfIsFilledIsTrue() {
-    this.cell.fill(1, this.outMock); // call fill initially to set isFilled to true
+    @Test
+    public void setsIsFilledToTrue() {
+      assertTrue(cell.fill(1, outMock));
+      assertTrue(cell.hasBeenFilled());
+    }
 
-    Assertions.assertFalse(this.cell.fill(2, this.outMock));
-    Mockito.verify(outMock).println("Cell already taken!");
+    @Test
+    public void doesNotChangeValueIfIsFilledIsTrue() {
+      cell.fill(1, outMock); // call fill initially to set isFilled to true
+
+      assertFalse(cell.fill(2, outMock));
+      verify(outMock).println("Cell already taken!");
+    }
   }
 }
