@@ -1,0 +1,49 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Game" verbose="1">
+  <test name="TicTacToe">
+    <groups>
+      <define name="TicTacToe">
+        <include name="tictactoeinstantiation"/>
+        <include name="displayboard"/>
+        <include name="switchturn"/>
+        <include name="hasgamefinished"/>
+        <include name="takeplayersmove"/>
+        <include name="declareresult"/>
+      </define>
+    </groups>
+
+    <classes>
+      <class name="TicTacToeTest"/>
+    </classes>
+  </test>
+
+  <test name="Board">
+    <groups>
+      <define name="Board">
+        <include name="display"/>
+        <include name="makemove"/>
+        <include name="winningtriplefound"/>
+        <include name="havecellsbeenfilled"/>
+      </define>
+    </groups>
+
+    <classes>
+      <class name="BoardTest"/>
+    </classes>
+  </test>
+
+  <test name="Cell">
+    <groups>
+      <define name="Cell">
+        <include name="cellinstantiation"/>
+        <include name="setvalue"/>
+        <include name="fill"/>
+      </define>
+    </groups>
+
+    <classes>
+      <class name="CellTest"/>
+    </classes>
+  </test>
+</suite>
