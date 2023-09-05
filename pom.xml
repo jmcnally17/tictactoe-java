@@ -37,10 +37,10 @@
   </dependencies>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main</sourceDirectory>
     <outputDirectory>target/classes</outputDirectory>
-    <testSourceDirectory>tests</testSourceDirectory>
-    <testOutputDirectory>target/tests</testOutputDirectory>
+    <testSourceDirectory>src/test</testSourceDirectory>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
     <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
