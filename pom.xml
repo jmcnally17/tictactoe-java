@@ -37,6 +37,10 @@
   </dependencies>
 
   <build>
+    <sourceDirectory>src</sourceDirectory>
+    <outputDirectory>target/classes</outputDirectory>
+    <testSourceDirectory>tests</testSourceDirectory>
+    <testOutputDirectory>target/tests</testOutputDirectory>
     <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -44,27 +48,27 @@
         <version>0.8.10</version>
         <executions>
           <execution>
-            <id>default-prepare-agent</id>
+            <id>prepare-agent</id>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
-              <destFile>bin/coverage/jacoco.exec</destFile>
+              <destFile>target/jacoco.exec</destFile>
             </configuration>
           </execution>
           <execution>
-            <id>default-report</id>
+            <id>report</id>
             <phase>test</phase>
             <goals>
               <goal>report</goal>
             </goals>
             <configuration>
-              <dataFile>bin/coverage/jacoco.exec</dataFile>
+              <dataFile>target/jacoco.exec</dataFile>
               <outputDirectory>coverage</outputDirectory>
             </configuration>
           </execution>
           <execution>
-            <id>default-check</id>
+            <id>check</id>
             <goals>
             <goal>check</goal>
             </goals>
@@ -86,10 +90,6 @@
         </executions>
       </plugin>
     </plugins>
-    <sourceDirectory>src</sourceDirectory>
-    <outputDirectory>bin/classes</outputDirectory>
-    <testSourceDirectory>tests</testSourceDirectory>
-    <testOutputDirectory>bin/tests</testOutputDirectory>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -109,15 +109,6 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
-          <configuration>
-            <argLine>
-              --illegal-access=permit
-            </argLine>
-            <testFailureIgnore>true</testFailureIgnore>
-            <forkCount>2</forkCount>
-            <reuseForks>true</reuseForks>
-            <argLine>${surefireArgLine}</argLine> 
-          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
