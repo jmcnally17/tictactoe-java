@@ -19,7 +19,7 @@ Upon loading the game, the players will be met with an interface that displays t
 Start by cloning this repository using
 
 ```
-git clone https://github.com/jmcnally17/tictactoe-java.git
+git clone https://github.com/jmcnally17/tictactoe-java-maven.git
 ```
 
 To compile the code, you can do so using [Maven](https://maven.apache.org/) (one of Java's build automation tools), which can be installed via Homebrew. However, you will need to install the Java Development Kit (JDK) first, which can also be installed via Homebrew. Install and then link it by running
@@ -35,17 +35,17 @@ and then you are free to install Maven with
 brew install maven
 ```
 
-Then navigate to the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory and enter
+Then navigate to the [main](https://github.com/jmcnally17/tictactoe-java-maven/tree/main) directory and enter
 
 ```
 mvn compile
 ```
 
-which creates the .class files in the in a `target/classes` folder in the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory.
+which creates the .class files in the in a `target/classes` folder in the [main](https://github.com/jmcnally17/tictactoe-java-maven/tree/main) directory.
 
 ## How To Run
 
-While in the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory, run
+While in the [main](https://github.com/jmcnally17/tictactoe-java-maven/tree/main) directory, run
 
 ```
 java -cp target/classes TicTacToe
@@ -61,6 +61,6 @@ Tests have been written using [TestNG](https://testng.org/doc/) and [Mockito](ht
 mvn test
 ```
 
-into your terminal. This compiles the test files into .class files which are generated and run in a `target/tests` folder in the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory.
+into your terminal. This compiles the test files into .class files which are generated and run in a `target/tests` folder in the [main](https://github.com/jmcnally17/tictactoe-java-maven/tree/main) directory.
 
-After running the tests, code coverage stats should have been generated in a coverage folder in the [main](https://github.com/jmcnally17/tictactoe-java/tree/main) directory using the [JaCoCo](https://www.jacoco.org/jacoco/) Maven plugin. These are in HTML format and can be viewed by opening them in your browser.
+After running the tests, code coverage stats should have been generated in a coverage folder in the [main](https://github.com/jmcnally17/tictactoe-java-maven/tree/main) directory using the [JaCoCo](https://www.jacoco.org/jacoco/) Maven plugin. These are in HTML format and can be viewed by opening them in your browser.
