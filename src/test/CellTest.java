@@ -1,4 +1,4 @@
-import static org.testng.AssertJUnit.*;
+import static org.testng.Assert.*;
 import static org.mockito.Mockito.*;
 import java.io.PrintStream;
 
